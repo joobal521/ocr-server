@@ -5,9 +5,11 @@ from rest_framework.exceptions import NotFound, PermissionDenied
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.shortcuts import render
 from django.http.response import HttpResponse
-from pyuploadcare import uploadcare, File
+from pyuploadcare import Uploadcare, File
 from .models import Board
 from .serializers import BoardSerializer
+from django.conf import settings
+import os
 
 def say_hello(request) :
     return render(request, "index.html", {
@@ -34,19 +36,17 @@ class Boards(APIView) :
 
         if serializer.is_valid() :
             board = serializer.save() # create() 메소드를 호출하게 됨 
-        if board.loaded_file and board.loaded_file.size<settings.FILE_SIZE_LIMIT :
-        uploadcare = Uploadcare(public_key=setting.'UC_PUBLIC_KEY', secret_key=setting.'UC_SECRET_KEY')
-        with open('board.loaded_file.path', 'rb') as file_object:
-        ucare_file = uploadcare.upload(file_object)
-        image url=
-        print("ucare_file.uuid: ", ucare_file.uuid)
-        print("ucare_file.uuid: ", f"https://ucarecdn.com/{ucare_file.uuid}/")
-
-        board.author = request.user
-            board.save()
-    
-            return redirect(f'/board/{board.pk}')
-
+        if board.file and board.file.size < settings.FILE_SIZE_LIMIT :
+                uploadcare = Uploadcare(public_key=settings.UC_PUBLIC_KEY, secret_key=settings.UC_SECRET_KEY)
+                with open(board.file.path, 'rb') as file_object:
+                    ucare_file = uploadcare.upload(file_object)
+                    image_url = f"https://ucarecdn.com/{ucare_file.uuid}/"
+                    board.image_url = image_url
+                board.author = request.user
+                board.save()
+                if os.path.isfile(board.file.path) :
+                    os.remove(board.file.path)
+        return redirect(f'/board/{board.pk}')
         return Response(serializer.errors)
 
 class BoardDetail(APIView) :

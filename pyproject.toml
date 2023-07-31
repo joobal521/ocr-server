@@ -12,6 +12,7 @@ django = "^4.2.3"
 djangorestframework = "^3.14.0"
 pillow = "^10.0.0"
 pytesseract = "^0.3.10"
+pyuploadcare = "^4.1.0"
 
 
 [build-system]
