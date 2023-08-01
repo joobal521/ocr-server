@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'style/form.css' %}" </head>
+    <link rel="stylesheet" href="{% static 'style/form.css' %}"> </head>
     {% include 'header.html' %}
 
 <body>
@@ -15,11 +15,20 @@
             <input type="text" id="title" name="title" readonly>
             <p type="text" id="author"></p>
             <textarea id="contents" name="contents" readonly></textarea>
+            
+            <!--<input type="datetime" id="created_at" readonly>
+            <input type="datetime" id="modified_at" readonly>-->
+            <form method="POST" action="">
             <div id="image-container">
                 <img id="loaded_file" name="loaded_file" src="">
             </div>
-            <input type="datetime" id="created_at" readonly>
-            <input type="datetime" id="modified_at" readonly>
+
+            <div id="tesseract_box">
+                <input type="checkbox" name="check_ko" id="check_ko"><span class="ko_box">한국어</span>
+                <input type="checkbox" name="check_eng" id="check_eng"><span class="eng_box">영어</span>
+            </div>
+            <input type="submit">
+        </form>
         </div>
     </section>
     <script src="{% static 'script/board-api.js' %}"></script>

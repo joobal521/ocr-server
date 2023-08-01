@@ -44,7 +44,7 @@ class Boards(APIView) :
                     board.image_url = image_url
                 board.author = request.user
                 board.save()
-                if os.path.isfile(board.file.path) :
+                if os.path.isfile(board.loaded_file.path) :
                     os.remove(board.file.path)
         return redirect(f'/board/{board.pk}')
         return Response(serializer.errors)
