@@ -21,6 +21,7 @@ class Login(APIView) :
             return Response({'login' : 'success'})
         else :
             return Response(status.HTTP_401_UNAUTHORIZED)
+        
 
 class Logout(APIView) :
     permission_classes = [IsAuthenticated]
@@ -28,8 +29,10 @@ class Logout(APIView) :
     def post(self, request) :
         logout(request)
         # return Response({})
-        return redirect("/api/v1/boards")
+        return redirect("/")
 
+
+#전체 유저 조회
 class UserList(APIView) :
     permission_classes = [IsAuthenticated]
 
@@ -41,6 +44,7 @@ class UserList(APIView) :
         else :
             raise PermissionDenied
 
+#신규유저 등록
 class Users(APIView) :
     def post(self, request) :
         serializer = UserSerializer(data=request.data)

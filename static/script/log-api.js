@@ -15,7 +15,7 @@ function login() {
         console.log("response : ", response);
 
         if (response.login === 'success') {
-            location.href = '/mypage';
+            location.href = '/';
         } else {
             alert("회원정보를 확인하세요.");
             location.href = '/login';

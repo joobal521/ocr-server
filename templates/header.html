@@ -6,11 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static '/style/grid.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="{% static 'script/csrf.js' %}"></script>
     <title>OCR-SERVER</title>
 </head>
 <body>
     <header>
+        <div class="header_wrap">
+        <div class="top_wrap">
+            <div class="logo">
         <h1>OCR SERVER</h1>
+    </div>
+    <div class="user_nav">
+        {% if user.is_authenticated %}
+        <form action="/api/v1/users/logout" method="POST">
+            {% csrf_token %}
+            <input type="submit" id="logout" name="logout" value="로그아웃">
+        </form>
+        {% else %}
+      <a href="/login">로그인</a>
+      <a href="/join">회원가입</a>
+      {%endif%}
+    </div>
+    </div>
+    <div class="nav">
+        <ul class="menu align-center expanded text-center SMN_effect-5" style="padding-left: 0 !important;">
+
+            <li>
+                <a class="menu" href="/">
+                    <span>홈페이지</span>
+                </a>
+            </li>
+            <li>
+                <a class="menu" href="">
+                    <span>게시판</span>
+                </a>
+            </li>
+            </ul>
+    </div>
+    </div>
+
     </header>
 </body>
 </html>
