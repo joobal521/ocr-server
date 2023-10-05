@@ -1,12 +1,11 @@
-form,
+.join-form,
 #board-contents
  {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     width: 60vw;
-    margin: auto;
+    margin:0, auto;
 }
 
 #board-contents > p {
@@ -37,4 +36,10 @@ input[type='submit']
 img {
     width: 80%;
     margin: auto;
+}
+
+
+/*게시판 form*/
+.form_wrap{
+    display: flex;
 }

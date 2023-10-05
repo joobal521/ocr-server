@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from PIL import Image
 import pytesseract
 
+
 class OCR(APIView) :
     def get(self, request) :
         filename="eurotext.png"
@@ -40,4 +41,5 @@ def board_write(request) :
     return render(request, 'board_form.html')
 
 def boards(request) :
+    
     return render(request, 'board_list.html')

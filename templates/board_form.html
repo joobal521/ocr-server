@@ -12,14 +12,17 @@
 <body>
     <section>
         <h2>게시글 등록</h2>
-        <form method="POST" action="/api/v1/boards/" enctype="multipart/form-data">
+        <div class="form_wrap">
+        <form enctype="multipart/form-data">
             {% csrf_token %}
             <input type="text" id="title" name="title" placeholder="title" autofocus>
             <textarea id="contents" name="contents"></textarea>
             <input type="file" id="file" name="loaded_file" accept="image/png, image/jpg, image/jpeg, image.gif">
-            <input type="submit">
+            <input type="button" value="등록" onclick="boardWrite()">
         </form>
+    </div>
     </section>
+    <script src="{% static 'script/boards-api.js' %}"></script>
 </body>
 {% include 'footer.html' %}
 

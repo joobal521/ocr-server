@@ -24,6 +24,7 @@ def say_hello(request) :
 #     return Response(serializer.data)
 
 class Boards(APIView) :
+    #누구라도 접근 허용
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get(self, request) :

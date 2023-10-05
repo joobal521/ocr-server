@@ -13,3 +13,5 @@ $.ajax({
     $('#created_at').val(board.created_at);
     $('#modified_at').val(board.modified_at);
 });
+
+
