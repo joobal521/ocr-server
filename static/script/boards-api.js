@@ -23,6 +23,8 @@ $.ajax({
 
 }
 
+
+//게시판 목록
 $(document).ready(function() {
     console.log("게시판 목록 조회");
     // 페이지 로드 시 Ajax로 게시물 목록을 가져옵니다.
@@ -54,3 +56,18 @@ $(document).ready(function() {
         }
     });
 });
+
+//비로그인시 글쓰기 버튼을 눌렀을때 로그인 페이지로 이동
+function writeClick(){
+    Swal.fire({
+        title: '회원만 가능합니다',
+        text: '로그인 페이지로 돌아갑니다.',
+        icon: 'warning',
+        showConfirmButton: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            location.href = "/login"; // 로그인으로 이동
+        }
+    });
+
+}

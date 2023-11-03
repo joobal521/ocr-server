@@ -38,8 +38,48 @@ img {
     margin: auto;
 }
 
+/*로그인*/
+.login-text{
+    color:lightblue;
+}
+.login-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
 
-/*게시판 form*/
+.login-form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.login-btn{
+border-radius: 4px;
+background-color: lightblue;
+color:white;
+margin-top: 30px;
+}
+
+/*회원가입 form*/
 .form_wrap{
     display: flex;
+    justify-content: center;
+}
+
+.input-box{
+width: 50vw;
+}
+
+.join-box{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.join-btn{
+    width: 30vw; 
+    border-radius: 4px;
+    background-color: lightblue;
+    color: white;
 }

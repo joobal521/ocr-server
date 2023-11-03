@@ -10,12 +10,14 @@
 {% include 'header.html' %}
 <body>
     <section>
-        <h2>로그인</h2>
-        <form>
+        <div class="login-box">
+        <h2 class="login-text">로그인</h2>
+        <form class="login-form">
             <input type="text" id="username" name="username" placeholder="username">
             <input type="password" id="password" name="password" placeholder="password">
-            <input type="button" value="로그인" onclick="login()">
+            <input type="button" class="login-btn" value="로그인" onclick="login()">
         </form>
+        </div>
     </section>
 </body>
 <script src="{% static 'script/log-api.js' %}"></script>
